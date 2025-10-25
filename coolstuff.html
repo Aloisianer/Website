@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="progress">0%</div>
+
+    <script>
+        const VIDEO_URL = '/video.mp4';
+        const CACHE_NAME = 'video-cache';
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/coolstuff-sw.js')
+                .then(() => navigator.serviceWorker.ready)
+                .then(() => checkCache())
+                .catch(error => console.error('Service Worker registration failed:', error));
+        } else {
+            window.location.href = VIDEO_URL;
+        }
+
+        async function checkCache() {
+            const cache = await caches.open(CACHE_NAME);
+            const response = await cache.match(VIDEO_URL);
+            
+            if (response) {
+                window.location.href = VIDEO_URL;
+            } else {
+                startCaching();
+            }
+        }
+
+        function startCaching() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', VIDEO_URL, true);
+            xhr.responseType = 'blob';
+
+            xhr.addEventListener('progress', (event) => {
+                if (event.lengthComputable) {
+                    const percent = (event.loaded / event.total * 100).toFixed(2);
+                    document.getElementById('progress').textContent = `${percent}%`;
+                }
+            });
+
+            xhr.addEventListener('load', async () => {
+                if (xhr.status === 200) {
+                    const blob = xhr.response;
+                    const cache = await caches.open(CACHE_NAME);
+                    const headers = { 'Content-Type': xhr.getResponseHeader('Content-Type') };
+                    const response = new Response(blob, { headers });
+                    await cache.put(VIDEO_URL, response);
+                    window.location.href = VIDEO_URL;
+                }
+            });
+
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

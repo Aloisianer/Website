@@ -1,0 +1,6 @@
+/src/index/node_modules/
+/src/index/out/
+/src/index/.next/
+/src/restart/node_modules/
+/src/restart/out/
+/src/restart/.next/
