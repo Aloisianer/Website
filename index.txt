@@ -16,5 +16,5 @@ f:I[6614,[],""]
 a:null
 e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-12:{"metadata":[["$","title","0",{"children":"Alois~"}],["$","meta","1",{"name":"description","content":"Uptempo, NEXT.js & Club Mate"}]],"error":null,"digest":"$undefined"}
+12:{"metadata":[["$","title","0",{"children":"Alois"}],["$","meta","1",{"name":"description","content":"Uptempo, NEXT.js & Club Mate"}]],"error":null,"digest":"$undefined"}
 c:{"metadata":"$12:metadata","error":null,"digest":"$undefined"}
