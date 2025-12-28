@@ -12,7 +12,7 @@ export default function Home() {
         initial={{ scale: 0.75, rotateZ: 30, rotateX: 0, opacity: 0.5 }}
         animate={{ scale: 2, rotateZ: -15, rotateX: 15, opacity: 1 }}
         transition={{ duration: 0.35 }}
-        className="transform-3d text-4xl font-semibold"
+        className="transform-3d text-4xl font-semibold z-20"
       >
         {"Hallllo! 👋"}
       </motion.div>
@@ -20,7 +20,7 @@ export default function Home() {
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1, duration: 0.75 }}
-        className="absolute bottom-10 text-lg font-medium flex justify-center gap-2"
+        className="absolute bottom-10 text-lg font-medium flex justify-center gap-2 z-20"
       >
         <LinkButton link="https://github.com/Aloisianer">
           <FIcon.GitHub />
